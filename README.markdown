@@ -8,7 +8,7 @@ The intent of this project is to provide some very basic utilities related to Fa
 At the moment there are only two features:
 
 * An utility that forces the update of an URL in the Facebook's share cache.
-* A Context Processor that allows you to hide Facebook [Open Graph Protocol](http://developers.facebook.com/docs/opengraphprotocol/) &lt;meta&gt; tags from others User Agents.
+* A Context Processor that allows you to hide Facebook [Open Graph Protocol](http://developers.facebook.com/docs/opengraphprotocol/) &lt;meta&gt; tags from other User Agents.
 
 
 Installation
@@ -21,8 +21,8 @@ or
 `pip install git+http://github.com/caioariede/django-facebook-utils.git#egg=facebook_utils`
 
 
-How to force an URL to be updated from Facebook cache
------------------------------------------------------
+How to force an URL to be updated from Facebook's cache
+-------------------------------------------------------
 
 1. The `ping_facebook` command:
 
@@ -30,7 +30,7 @@ How to force an URL to be updated from Facebook cache
 	
 	See below **How to extend the ping_facebook command** to fit your needs.
 
-2. Calling the `ping` shortcut:
+2. Calling the `ping_facebook` shortcut:
 
 		from facebook_utils.shortcuts import ping_facebook
 		
@@ -39,14 +39,14 @@ How to force an URL to be updated from Facebook cache
 		else:
 			print('fail')
 	
-	This shortcut will only return `True` or `False`. If you need more information to debug, you can call `facebook_utils.utils.ping` or use the `ping_facebook` with `--verbosity=2` (more verbose).
+	This shortcut will only return `True` or `False`. If you need more information to debug, you can call `facebook_utils.utils.ping` or use the `ping_facebook` command with `--verbosity=2` (more verbose).
 
 Detecting Facebook requests
 ---------------------------
 
 1. The `facebookexternalhit` context processor (for templates):
 
-	Append `facebook_utils.context_processors.facebookexternalhit` to the [TEMPLATE_CONTEXT_PROCESSOR](https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATE_CONTEXT_PROCESSORS) setting in `settings.py`:
+	Add `facebook_utils.context_processors.facebookexternalhit` to the [TEMPLATE_CONTEXT_PROCESSOR](https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATE_CONTEXT_PROCESSORS) setting in `settings.py`:
 	
 		TEMPLATE_CONTEXT_PROCESSORS = (
 			#  .. other stuff
@@ -71,8 +71,8 @@ Detecting Facebook requests
 				return HttpResponse('Hello, Facebook!')
 			return HttpResponse('Hello visitor!')
 
-How to extend ping_facebook command
------------------------------------
+How to extend the ping_facebook command
+---------------------------------------
 
 You can easily extend the `ping_facebook` command to fit your needs.
 
@@ -89,6 +89,7 @@ You can easily extend the `ping_facebook` command to fit your needs.
             def handle(self, **options):
                 verbosity = options.get('verbosity')
                 traceback = options.get('traceback')
+                
                 for page in Page.objects.all():
                     page_url = page.get_absolute_url()
                     self.do_ping(page_url, verbosity, traceback)
