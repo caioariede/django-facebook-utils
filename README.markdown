@@ -14,7 +14,7 @@ At the moment there are only two features:
 Installation
 ------------
 
-`pip install facebook_utils`
+`pip install django-facebook-utils`
 
 or
 
@@ -48,10 +48,10 @@ Detecting Facebook requests
 
 	Add `facebook_utils.context_processors.facebookexternalhit` to the [TEMPLATE_CONTEXT_PROCESSOR](https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATE_CONTEXT_PROCESSORS) setting in `settings.py`:
 	
-		TEMPLATE_CONTEXT_PROCESSORS = (
-			#  .. other stuff
-    		"facebook_utils.context_processors.facebookexternalhit",
-	   	 )
+        TEMPLATE_CONTEXT_PROCESSORS = (
+            #  .. other stuff
+            'facebook_utils.context_processors.facebookexternalhit',
+        )
 
 	In the template:
 	
