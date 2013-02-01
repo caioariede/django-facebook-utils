@@ -14,25 +14,24 @@ At the moment there are only two features:
 Test it
 =======
 
-    # Download and install example
-    cd /tmp
-    virtualenv testfacebookutils
-    cd testfacebookutils
-    git clone https://github.com/caioariede/django-facebook-utils.git
-    source bin/activate
-    cd django-facebook-utils/example
-    pip install -r requirements.txt
+````bash
+# Download and install example
+cd /tmp
+virtualenv testfacebookutils
+cd testfacebookutils
+git clone https://github.com/caioariede/django-facebook-utils.git
+source bin/activate
+cd django-facebook-utils/example
+pip install -r requirements.txt
 
-    # Test
-    ./manage.py ping_facebook http://example.com --verbosity=2
-
+# Test
+./manage.py ping_facebook http://example.com --verbosity=2
+````
 
 Installation
 ------------
 
-`pip install django-facebook-utils`
-
-or
+`pip install django-facebook-utils` or install the master branch:
 
 `pip install git+http://github.com/caioariede/django-facebook-utils.git#egg=facebook_utils`
 
