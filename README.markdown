@@ -11,6 +11,22 @@ At the moment there are only two features:
 * A Context Processor that allows you to hide Facebook [Open Graph Protocol](http://developers.facebook.com/docs/opengraphprotocol/) &lt;meta&gt; tags from other User Agents.
 
 
+Test it
+=======
+
+    # Download and install example
+    cd /tmp
+    virtualenv testfacebookutils
+    cd testfacebookutils
+    git clone https://github.com/caioariede/django-facebook-utils.git
+    source bin/activate
+    cd django-facebook-utils/example
+    pip install -r requirements.txt
+
+    # Test
+    ./manage.py ping_facebook http://example.com --verbosity=2
+
+
 Installation
 ------------
 
